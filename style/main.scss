@@ -1,4 +1,40 @@
-@import "menu.scss";
+* {
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+
+
+}
+
+body {
+    background: #41998C;
+
+}
+
+.Nav {
+    display: flex;
+    flex-direction: column;
+    background: #F597A9;
+    width: 100%;
+
+    height: 50px;
+    z-index: 999%;
+
+    top: 0;
+    left: 0;
+    position: fixed;
+
+}
+
+
+.fa-feather-alt {
+    color: whitesmoke;
+    font-size: 30px;
+    padding: 10px 10px;
+
+}
 
 .main {
     display: flex;
@@ -8,10 +44,10 @@
     font-family: Montserrat;
     overflow: hidden;
 
+
 }
 
 .Categories {
-
     padding: 10px 10px;
     font-size: 20px;
     background: whitesmoke;
@@ -23,18 +59,14 @@
     font-family: Montserrat;
     color: #41998C;
     font-weight: bold;
-    position: relative;
+    //position: relative;
     width: 200px;
+    margin-top: 20%;
+
 
     @media screen and (min-width: 650px) {
-
         width: 250px;
-
     }
-
-
-
-
 }
 
 .Categories:hover {
@@ -48,7 +80,6 @@
     border-radius: 5px;
     //opacity: 80%;
     width: 200px;
-
 }
 
 .main_categorie-list {
@@ -58,9 +89,7 @@
     background: #F597A9;
     border-radius: 5px;
     cursor: context-menu;
-
     position: absolute;
-
 
     .categories_list-item {
         padding: 10px 10px;
@@ -69,15 +98,11 @@
         color: whitesmoke;
         font-weight: bold;
         font-size: 20px;
-
         width: 200px;
 
         @media screen and (min-width: 650px) {
-
             width: 250px;
-
         }
-
     }
 }
 
@@ -87,8 +112,6 @@
     border: 2px solid #41998C;
 
 }
-
-
 
 .wrapper {
     width: 90%;

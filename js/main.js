@@ -10,10 +10,10 @@ let bonusCounter = document.querySelector(".bonusCounter")
 let wrapper_Category = document.querySelector(".wrapper_Category")
 
 let acceptingAnswers = true
-let score = 0;
-let counter = 1;
+let score = 0
+let counter = 1
 let availabelQuestions = []
-let bonus = 10;
+let bonus = 10
 let maxQuestions = 10
 
 async function getCountry(categorie) {
@@ -50,7 +50,7 @@ function updateUi(data) {
     let i = 0
     wrapperBtn.addEventListener("click", function (e) {
         if (i < result.length) {
-            const elm = result[i++];
+            const elm = result[i++]
             ChangeBtnInnerText(e)
             getData(elm)
             disabledTarget()
@@ -61,7 +61,7 @@ function updateUi(data) {
 
 function disabledTarget() {
     for (let i = 0; i < quizDiv.length; i++) {
-        const element = quizDiv[i];
+        const element = quizDiv[i]
         wrapperBtn.disabled = true
         element.disabled = false
     }
@@ -75,13 +75,15 @@ function getData(elm) {
     quizDiv[2].textContent = elm.incorrect_answers[2]
     quizDiv[3].textContent = elm.correct_answer
     for (let i = 0; i < quizDiv.length; i++) {
-        subWrapper.appendChild(quizDiv[Math.floor(Math.random() * quizDiv.length)])
+        subWrapper.appendChild(
+            quizDiv[Math.floor(Math.random() * quizDiv.length)]
+        )
     }
     prepareEvent(elm)
 }
 
 function prepareEvent(elm) {
-    quizDiv.forEach(choice => {
+    quizDiv.forEach((choice) => {
         choice.addEventListener("click", function (e) {
             wrapperBtn.disabled = false
             let eventTarget = e.target
@@ -89,7 +91,7 @@ function prepareEvent(elm) {
         })
         choice.style.background = "rgb(221, 219, 219)"
         choice.style.color = "black"
-    });
+    })
 }
 
 function executeColors(eventTarget, elm) {
@@ -107,7 +109,7 @@ function executeColors(eventTarget, elm) {
 
 function disabledEvents() {
     for (let i = 0; i < quizDiv.length; i++) {
-        const element = quizDiv[i];
+        const element = quizDiv[i]
         element.disabled = true
     }
 }
@@ -131,6 +133,7 @@ function ChangeBtnInnerText(e) {
 progressBarCounter = (counter) => {
     progressBArfull.style.width = `${(counter / maxQuestions) * 100}%`
 }
+
 countBonus = (num) => {
     score += num
     bonusCounter.innerText = `Score: ${score}`
@@ -138,13 +141,19 @@ countBonus = (num) => {
 
 hideList = () => {
     for (let i = 0; i < li.length; i++) {
-        let listItem = li[i];
+        let listItem = li[i]
         listItem.style.display = "none"
     }
     btn.textContent = "Restart"
     btn.addEventListener("click", function () {
-        if (btn.innerText = "Restart") {
-            location.reload();
+        if ((btn.innerText = "Restart")) {
+            location.reload()
         }
     })
+}
+
+setLocalStorage = (bonus) => {
+    localStorage.setItem("key", bonus)
+    localStorage.setItem("mytime", Date.now())
+    console.log(hej)
 }

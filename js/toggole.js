@@ -1,4 +1,4 @@
-let fabars = document.querySelector(".fa-bars")
+let fabars = document.querySelector(".fa-feather-alt")
 let nav_container = document.querySelector(".nav_container")
 
 fabars.addEventListener("click", function () {
