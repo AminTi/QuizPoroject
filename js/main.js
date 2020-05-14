@@ -15,6 +15,7 @@ let counter = 1
 let availabelQuestions = []
 let bonus = 10
 let maxQuestions = 10
+let countClick = 0
 
 async function getCountry(categorie) {
     let res = await fetch(
@@ -48,13 +49,16 @@ function getlistValue(elm) {
 function updateUi(data) {
     let result = data.results
     let i = 0
+
     wrapperBtn.addEventListener("click", function (e) {
+        popUp(countClick++)
         if (i < result.length) {
             const elm = result[i++]
             ChangeBtnInnerText(e)
             getData(elm)
             disabledTarget()
             progressBarCounter(counter++)
+
         }
     })
 }
@@ -132,6 +136,7 @@ function ChangeBtnInnerText(e) {
 
 progressBarCounter = (counter) => {
     progressBArfull.style.width = `${(counter / maxQuestions) * 100}%`
+
 }
 
 countBonus = (num) => {
@@ -152,8 +157,17 @@ hideList = () => {
     })
 }
 
-setLocalStorage = (bonus) => {
-    localStorage.setItem("key", bonus)
-    localStorage.setItem("mytime", Date.now())
-    console.log(hej)
+
+let popup = document.querySelector(".popup")
+let popUpScore = document.querySelector(".popUpScore")
+let popuUpBtn = document.querySelector(".popupBtn")
+
+popUp = (countClick) => {
+    if (countClick == maxQuestions) {
+        popup.style.display = "block"
+        popUpScore.textContent = bonusCounter.textContent
+        popuUpBtn.addEventListener("click", function (e) {
+            location.reload()
+        })
+    }
 }
