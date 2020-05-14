@@ -400,6 +400,12 @@ footer {
       grid-template-rows: repeat(auto-fill, minmax(0.5fr, 1fr));
 }
 
+@media screen and (min-width: 650px) {
+  .modal-content {
+    width: 50%;
+  }
+}
+
 .popupBtn {
   background-color: #41998C;
   border: none;
@@ -416,5 +422,20 @@ footer {
 
 #popup1 {
   display: none;
+}
+
+.popUpScore {
+  color: #41998C;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.ScoreParagraf {
+  color: #41998C;
+  font-family: Montserrat;
+  font-size: 25px;
+  font-weight: bolder;
 }
 /*# sourceMappingURL=main.css.map */
