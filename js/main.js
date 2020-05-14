@@ -165,7 +165,7 @@ let popuUpBtn = document.querySelector(".popupBtn")
 popUp = (countClick) => {
     if (countClick == maxQuestions) {
         popup.style.display = "block"
-        popUpScore.textContent = bonusCounter.textContent
+        popUpScore.textContent = bonusCounter.textContent.slice(6)
         popuUpBtn.addEventListener("click", function (e) {
             location.reload()
         })
