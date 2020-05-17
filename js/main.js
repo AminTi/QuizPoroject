@@ -49,7 +49,6 @@ function getlistValue(elm) {
 function updateUi(data) {
     let result = data.results
     let i = 0
-
     wrapperBtn.addEventListener("click", function (e) {
         popUp(countClick++)
         if (i < result.length) {
@@ -63,7 +62,7 @@ function updateUi(data) {
     })
 }
 
-function disabledTarget() {
+disabledTarget = () => {
     for (let i = 0; i < quizDiv.length; i++) {
         const element = quizDiv[i]
         wrapperBtn.disabled = true
@@ -71,13 +70,36 @@ function disabledTarget() {
     }
 }
 
-function getData(elm) {
+function myFunction() {
+    var uri = "McDonald&#039;s";
+    var uri_enc = encodeURIComponent(uri);
+    var uri_dec = decodeURIComponent(uri_enc);
+    var res = "Encoded URI: " + uri_enc + "<br>" + "Decoded URI: " + uri_dec;
+    document.getElementById("demo").innerHTML = res;
+}
+
+getData = (elm) => {
+    let parser = new DOMParser;
+    let dom = parser.parseFromString(
+        '<!doctype html><body>' + elm.question, 'text/html');
+    let decodedString = dom.body.textContent;
+
+    let answer1 = parser.parseFromString(
+        '<!doctype html><body>' + elm.incorrect_answers[0], 'text/html');
+    let answer2 = parser.parseFromString(
+        '<!doctype html><body>' + elm.incorrect_answers[1], 'text/html');
+    let answer3 = parser.parseFromString(
+        '<!doctype html><body>' + elm.incorrect_answers[2], 'text/html');
+    let correctAnswer = parser.parseFromString(
+        '<!doctype html><body>' + elm.correct_answer, 'text/html');
+
     wrapper_Category.textContent = elm.category
-    question.textContent = elm.question
-    quizDiv[0].textContent = elm.incorrect_answers[0]
-    quizDiv[1].textContent = elm.incorrect_answers[1]
-    quizDiv[2].textContent = elm.incorrect_answers[2]
-    quizDiv[3].textContent = elm.correct_answer
+    question.textContent = decodedString
+    quizDiv[0].textContent = answer1.body.textContent
+    quizDiv[1].textContent = answer2.body.textContent
+    quizDiv[2].textContent = answer3.body.textContent
+    quizDiv[3].textContent = correctAnswer.body.textContent
+
     for (let i = 0; i < quizDiv.length; i++) {
         subWrapper.appendChild(
             quizDiv[Math.floor(Math.random() * quizDiv.length)]
@@ -86,7 +108,7 @@ function getData(elm) {
     prepareEvent(elm)
 }
 
-function prepareEvent(elm) {
+prepareEvent = (elm) => {
     quizDiv.forEach((choice) => {
         choice.addEventListener("click", function (e) {
             wrapperBtn.disabled = false
@@ -98,7 +120,7 @@ function prepareEvent(elm) {
     })
 }
 
-function executeColors(eventTarget, elm) {
+executeColors = (eventTarget, elm) => {
     if (eventTarget.textContent === elm.correct_answer) {
         eventTarget.style.background = "green"
         eventTarget.style.color = "white"
@@ -111,18 +133,17 @@ function executeColors(eventTarget, elm) {
     }
 }
 
-function disabledEvents() {
+disabledEvents = () => {
     for (let i = 0; i < quizDiv.length; i++) {
         const element = quizDiv[i]
         element.disabled = true
     }
 }
-
-function toggleClasses() {
+toggleClasses = () => {
     wrapperBtn.textContent = "Start"
 }
 
-function ChangeBtnInnerText(e) {
+ChangeBtnInnerText = (e) => {
     if (e.target.textContent === "Start") {
         e.target.textContent = "Next"
         let loader = document.getElementById("loader")
@@ -136,7 +157,6 @@ function ChangeBtnInnerText(e) {
 
 progressBarCounter = (counter) => {
     progressBArfull.style.width = `${(counter / maxQuestions) * 100}%`
-
 }
 
 countBonus = (num) => {
@@ -157,7 +177,6 @@ hideList = () => {
     })
 }
 
-
 let popup = document.querySelector(".popup")
 let popUpScore = document.querySelector(".popUpScore")
 let popuUpBtn = document.querySelector(".popupBtn")
@@ -165,7 +184,7 @@ let popuUpBtn = document.querySelector(".popupBtn")
 popUp = (countClick) => {
     if (countClick == maxQuestions) {
         popup.style.display = "block"
-        popUpScore.textContent = bonusCounter.textContent.slice(6)
+        popUpScore.textContent = bonusCounter.textContent.slice(7)
         popuUpBtn.addEventListener("click", function (e) {
             location.reload()
         })
