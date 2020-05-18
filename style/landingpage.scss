@@ -41,14 +41,15 @@ h1 {
     font-size: 50px;
     padding: 5px;
 
-
-
-
+    @media screen and (min-width: 650px) {
+        font-size: 100px;
+    }
 }
 
 h2 {
     font-size: 30px;
-    opacity: 80%;
+    //  opacity: 80%;
+    color: #F597A9;
 }
 
 a {

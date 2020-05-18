@@ -17,7 +17,7 @@ let bonus = 10
 let maxQuestions = 10
 let countClick = 0
 
-async function getCountry(categorie) {
+async function getCat(categorie) {
     let res = await fetch(
         `https://opentdb.com/api.php?amount=10&category=${categorie}&difficulty=medium&type=multiple`
     )
@@ -38,7 +38,7 @@ function getlistValue(elm) {
         } else {
             categorie = "9"
         }
-        getCountry(categorie).then((data) => {
+        getCat(categorie).then((data) => {
             updateUi(data)
         })
         toggleClasses()
@@ -57,7 +57,6 @@ function updateUi(data) {
             getData(elm)
             disabledTarget()
             progressBarCounter(counter++)
-
         }
     })
 }
@@ -68,14 +67,6 @@ disabledTarget = () => {
         wrapperBtn.disabled = true
         element.disabled = false
     }
-}
-
-function myFunction() {
-    var uri = "McDonald&#039;s";
-    var uri_enc = encodeURIComponent(uri);
-    var uri_dec = decodeURIComponent(uri_enc);
-    var res = "Encoded URI: " + uri_enc + "<br>" + "Decoded URI: " + uri_dec;
-    document.getElementById("demo").innerHTML = res;
 }
 
 getData = (elm) => {
